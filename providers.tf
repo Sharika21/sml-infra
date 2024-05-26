@@ -10,5 +10,5 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region = "eu-west-1"
-  profile = "296274010522_DeveloperAccess"
+  # profile = "296274010522_DeveloperAccess"
 }

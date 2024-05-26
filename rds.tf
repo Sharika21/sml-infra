@@ -5,8 +5,8 @@ resource "aws_db_instance" "sml-db" {
   backup_target                         = "region"
   backup_window                         = "22:44-23:14"
   ca_cert_identifier                    = "rds-ca-rsa2048-g1"
-  db_name                               = null
-  db_subnet_group_name                  = "default-vpc-01f8cf2855398cc3c"
+  db_name                               = "db"
+  db_subnet_group_name                  = aws_db_subnet_group.subnet-sml.id
   engine                                = "mariadb"
   engine_version                        = "10.11.6"
   iam_database_authentication_enabled   = false
@@ -35,6 +35,7 @@ resource "aws_db_instance" "sml-db" {
     Name = "sharika-assignment"
   }
   username               = "user"
-  vpc_security_group_ids = ["sg-02517bdb44bb10202"]
+  password = "password"
+  vpc_security_group_ids = [aws_security_group.allow_tls_sml_database.id]
 }
 
